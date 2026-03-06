@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Chamada Entrante</title>
+
+<style>
+
+body{
+margin:0;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+font-family:Arial;
+font-weight:bold;
+transition:background 0.2s;
+}
+
+#texto{
+font-size:8vw;
+text-align:center;
+}
+
+.verde{
+background:#00ff00;
+color:white;
+}
+
+.branco{
+background:white;
+color:#00aa00;
+}
+
+</style>
+</head>
+
+<body class="verde">
+
+<div id="texto">
+CHAMADA ENTRANTE
+</div>
+
+<audio id="ring" autoplay loop>
+<source src="https://actions.google.com/sounds/v1/alarms/phone_alerts_and_rings.ogg" type="audio/ogg">
+</audio>
+
+<script>
+
+let estado=true
+
+setInterval(()=>{
+document.body.className=estado?"branco":"verde"
+estado=!estado
+},400)
+
+let audio=document.getElementById("ring")
+
+window.addEventListener("beforeunload",function(){
+audio.pause()
+audio.currentTime=0
+})
+
+</script>
+
+</body>
+</html>
