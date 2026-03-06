@@ -41,7 +41,7 @@ color:#00aa00;
 CHAMADA ENTRANTE
 </div>
 
-<audio id="ring" autoplay loop>
+<audio id="ring" loop>
 <source src="https://actions.google.com/sounds/v1/alarms/phone_alerts_and_rings.ogg" type="audio/ogg">
 </audio>
 
@@ -55,6 +55,13 @@ estado=!estado
 },400)
 
 let audio=document.getElementById("ring")
+
+function tocarRing(){
+audio.volume=1
+audio.play().catch(()=>{})
+}
+
+window.onload=tocarRing
 
 window.addEventListener("beforeunload",function(){
 audio.pause()
